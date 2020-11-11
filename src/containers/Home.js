@@ -6,7 +6,6 @@ import Offers from "../components/Home/Offers";
 const Home = ({ data }) => {
   return (
     <div>
-      <p>Home</p>
       <Link to="/offer">Go to offer</Link>
       <Header />
       <Offers data={data} />

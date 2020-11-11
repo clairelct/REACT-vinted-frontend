@@ -5,6 +5,7 @@ import axios from "axios";
 import Navigation from "./components/Navigation";
 import Home from "./containers/Home";
 import Offer from "./containers/Offer";
+import Logo from "./assets/Vinted_logo.png";
 
 function App() {
   // State requête axios
@@ -31,7 +32,7 @@ function App() {
     <p>Loading...</p>
   ) : (
     <Router>
-      <Navigation />
+      <Navigation logo={Logo} />
       {/* Pages */}
       <Switch>
         <Route path="/offer">

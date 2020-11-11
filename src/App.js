@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
@@ -7,7 +7,29 @@ import Home from "./containers/Home";
 import Offer from "./containers/Offer";
 
 function App() {
-  return (
+  // State requête axios
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://lereacteur-vinted-api.herokuapp.com/offers"
+      );
+      setData(response.data.offers);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return isLoading ? (
+    <p>Loading...</p>
+  ) : (
     <Router>
       <Navigation />
       {/* Pages */}
@@ -16,7 +38,7 @@ function App() {
           <Offer />
         </Route>
         <Route path="/">
-          <Home />
+          <Home data={data} />
         </Route>
       </Switch>
     </Router>

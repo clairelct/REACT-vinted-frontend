@@ -6,13 +6,11 @@ const Offers = ({ data }) => {
   return (
     <main>
       <div className="container">
-        {console.log(data)}
-
         <div className="offers-container">
-          {data.map((offer, index) => {
+          {data.offers.map((offer, index) => {
             return (
-              <div key={index} className="card-container">
-                <Link to={`/product/${offer._id}`}>
+              <div key={offer._id} className="card-container">
+                <Link to={`/offer/${offer._id}`}>
                   <div className="display-user">
                     <img
                       src={offer.owner.account.avatar.secure_url}

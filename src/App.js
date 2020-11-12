@@ -1,45 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import axios from "axios";
 import Navigation from "./components/Navigation";
-import Home from "./containers/Home";
-import Offer from "./containers/Offer";
+import HomePage from "./containers/HomePage";
+import OfferPage from "./containers/OfferPage";
+import SignupPage from "./containers/SignupPage";
+import LoginPage from "./containers/LoginPage";
 import Logo from "./assets/Vinted_logo.png";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch);
 
 function App() {
-  // State requête axios
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
-      );
-      setData(response.data.offers);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return isLoading ? (
-    <p>Loading...</p>
-  ) : (
+  return (
     <Router>
       <Navigation logo={Logo} />
       {/* Pages */}
       <Switch>
-        <Route path="/offer">
-          <Offer />
+        <Route path="/signup">
+          <SignupPage />
+        </Route>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/offer/:id">
+          <OfferPage />
         </Route>
         <Route path="/">
-          <Home data={data} />
+          <HomePage />
         </Route>
       </Switch>
     </Router>

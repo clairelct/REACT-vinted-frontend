@@ -1,0 +1,27 @@
+/* HEADER */
+.home-header {
+  background-image: url("https://images.vinted.net/thumbs/2560x1441/01_00636_oy5dGiQrBYG1uTwfeSmnb7Y8.jpeg?1597418184-48d07f2e7cff7a2dcc6c565ea338342ad5e9a5b9");
+  background-position: center 25%;
+  background-size: cover;
+}
+.intro-hero {
+  background-color: #fff;
+  width: 360px;
+  padding: 40px 25px;
+  border-radius: 3px;
+  font-size: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 0 2px rgba(17, 17, 17, 0.24);
+}
+.intro-hero span {
+  line-height: 40px;
+}
+.intro-hero button {
+  margin-top: 30px;
+  width: 187px;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

@@ -1,5 +1,7 @@
 import React from "react";
 import "./index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Navigation = ({ logo }) => {
   return (
@@ -7,14 +9,21 @@ const Navigation = ({ logo }) => {
       <div className="topbar">
         <div className="container">
           <div>
-            <img className="topbar-logo" src={logo} alt="Vinted" />
+            <Link to="/">
+              <img className="topbar-logo" src={logo} alt="Vinted" />
+            </Link>
           </div>
           <div className="search-container">
+            <FontAwesomeIcon icon="search" />
             <input type="text" placeholder="Recherche" />
           </div>
           <div>
-            <button>S'inscrire</button>
-            <button>Se connecter</button>
+            <Link to="/signup">
+              <button>S'inscrire</button>
+            </Link>
+            <Link to="/login">
+              <button>Se connecter</button>
+            </Link>
           </div>
           <button>Vends tes articles</button>
         </div>

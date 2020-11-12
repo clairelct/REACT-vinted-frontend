@@ -1,0 +1,12 @@
+/* OFFER */
+.product-main {
+  background-color: #ebedee;
+  height: 100vh;
+}
+.product-main .container {
+  display: flex;
+}
+
+.offer-product-details {
+  background-color: #ffffff;
+}

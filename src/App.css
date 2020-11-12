@@ -1,5 +1,6 @@
 /* Other rules */
 :root {
+  --grey-light: #bbbbbb;
   --grey-standard: #666666;
   --grey-dark: #333333;
   --turquoise: #37aeb7;
@@ -17,6 +18,10 @@ body {
   max-width: 1170px;
   margin: 0 auto;
 }
+.margin-top-58 {
+  margin-top: 58px;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -24,22 +29,18 @@ a {
 button {
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
+  color: #ffffff;
   font-family: "Roboto Condensed", sans-serif;
   border-radius: 5px;
   padding: 0px 20px;
+  cursor: pointer;
+  outline: none;
 }
-
-/* MAIN NAV */
-.main-nav {
-  background-color: lightgrey;
-}
-
 /* HEADER */
 header {
-  height: 100px;
-  background-color: var(--turquoise);
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 22px;
+  margin-top: 58px; /* hauteur nav */
+  height: 65vh;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
 }

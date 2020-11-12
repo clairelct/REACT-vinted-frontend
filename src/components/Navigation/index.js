@@ -3,7 +3,7 @@ import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
-const Navigation = ({ logo }) => {
+const Navigation = ({ logo, token, setUser }) => {
   return (
     <section className="main-nav">
       <div className="topbar">
@@ -17,14 +17,30 @@ const Navigation = ({ logo }) => {
             <FontAwesomeIcon icon="search" />
             <input type="text" placeholder="Recherche" />
           </div>
-          <div>
-            <Link to="/signup">
-              <button>S'inscrire</button>
-            </Link>
+          {/* Conditionnelle si user connecté */}
+          {token ? (
             <Link to="/login">
-              <button>Se connecter</button>
+              <button
+                className="btn-disconnect"
+                onClick={() => {
+                  setUser(null);
+                }}
+              >
+                Se déconnecter
+              </button>
             </Link>
-          </div>
+          ) : (
+            <div>
+              <Link to="/signup">
+                <button>S'inscrire</button>
+              </Link>
+              <Link to="/login">
+                <button>Se connecter</button>
+              </Link>
+            </div>
+          )}
+          {/* Fin conditionelle */}
+
           <button>Vends tes articles</button>
         </div>
       </div>

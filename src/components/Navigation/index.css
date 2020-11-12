@@ -56,6 +56,10 @@
 .topbar .container div:nth-of-type(3) button:first-child {
   margin-right: 15px;
 }
+.topbar .btn-disconnect {
+  background-color: var(--framboise);
+  border-color: var(--framboise);
+}
 .main-nav button {
   color: #ffffff;
   background-color: var(--turquoise);

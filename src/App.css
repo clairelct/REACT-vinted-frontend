@@ -4,6 +4,7 @@
   --grey-standard: #666666;
   --grey-dark: #333333;
   --turquoise: #37aeb7;
+  --framboise: #c2175b;
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -17,6 +18,7 @@ body {
   width: 80%;
   max-width: 1170px;
   margin: 0 auto;
+  padding: 20px 0;
 }
 .margin-top-58 {
   margin-top: 58px;
@@ -25,6 +27,12 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+h2 {
+  color: black;
+  font-size: 26px;
+  text-align: center;
+  margin: 15px 0 25px;
 }
 button {
   border: 1px solid var(--turquoise);
@@ -43,4 +51,16 @@ header {
   min-height: 400px;
   display: flex;
   align-items: center;
+}
+
+/* SIGNUP - LOGIN */
+form {
+  display: flex;
+  flex-direction: column;
+  width: 275px;
+  margin: 0 auto;
+}
+
+form input {
+  margin: 10px 0;
 }

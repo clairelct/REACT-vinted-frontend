@@ -1,6 +1,6 @@
 /* Other rules */
 :root {
-  --grey-light: #bbbbbb;
+  --grey-light: #b2b2b2;
   --grey-standard: #666666;
   --grey-dark: #333333;
   --turquoise: #37aeb7;
@@ -40,9 +40,19 @@ button {
   color: #ffffff;
   font-family: "Roboto Condensed", sans-serif;
   border-radius: 5px;
-  padding: 0px 20px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
   outline: none;
+}
+.btn-small {
+  padding: 4px 20px;
+  font-size: 13px;
+  min-width: 110px;
+}
+.btn-inverted {
+  background-color: #ffffff;
+  color: var(--turquoise);
 }
 /* HEADER */
 header {
@@ -63,4 +73,19 @@ form {
 
 form input {
   margin: 10px 0;
+}
+
+/* COMPONENT DISPLAY USER */
+.display-user {
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.display-user img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
 }

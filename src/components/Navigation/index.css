@@ -49,22 +49,15 @@
 .topbar .container div:nth-of-type(3) {
   display: flex;
 }
-.topbar .container div:nth-of-type(3) button {
-  color: var(--turquoise);
-  background-color: #ffffff;
-}
-.topbar .container div:nth-of-type(3) button:first-child {
+.topbar .btn-signup {
   margin-right: 15px;
 }
+
 .topbar .btn-disconnect {
   background-color: var(--framboise);
   border-color: var(--framboise);
 }
-.main-nav button {
-  color: #ffffff;
-  background-color: var(--turquoise);
-  height: 30px;
-}
+
 /** Nav **/
 .nav {
   display: none;

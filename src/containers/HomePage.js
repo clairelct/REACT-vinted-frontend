@@ -29,7 +29,6 @@ const HomePage = () => {
   ) : (
     <div>
       <Header />
-      <Link to="/offer">Go to offer</Link>
       <Offers data={data} />
     </div>
   );

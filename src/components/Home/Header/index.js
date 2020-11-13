@@ -1,5 +1,6 @@
 import React from "react";
 import "./index.css";
+import Button from "../../Shared/Button";
 
 const Header = () => {
   return (
@@ -7,7 +8,7 @@ const Header = () => {
       <div className="container">
         <div className="intro-hero">
           <span>Prêts à faire du tri dans vos placards ?</span>
-          <button>Commencer à vendre</button>
+          <Button text="Commencer à vendre" />
         </div>
       </div>
     </header>

@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import Button from "../Shared/Button";
 
 const Navigation = ({ logo, token, setUser }) => {
   return (
@@ -20,28 +21,31 @@ const Navigation = ({ logo, token, setUser }) => {
           {/* Conditionnelle si user connecté */}
           {token ? (
             <Link to="/login">
-              <button
-                className="btn-disconnect"
-                onClick={() => {
-                  setUser(null);
-                }}
-              >
-                Se déconnecter
-              </button>
+              <Button
+                className="btn-small btn-disconnect"
+                text="Se déconnecter"
+                setUser={setUser}
+              />
             </Link>
           ) : (
             <div>
               <Link to="/signup">
-                <button>S'inscrire</button>
+                <Button
+                  className="btn-small btn-inverted btn-signup"
+                  text="S'inscrire"
+                />
               </Link>
               <Link to="/login">
-                <button>Se connecter</button>
+                <Button
+                  className="btn-small btn-inverted btn-login"
+                  text="Se connecter"
+                />
               </Link>
             </div>
           )}
           {/* Fin conditionelle */}
 
-          <button>Vends tes articles</button>
+          <Button className="btn-small btn-sell" text="Vends tes articles" />
         </div>
       </div>
       <div className="nav">

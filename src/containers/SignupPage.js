@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import Button from "../components/Shared/Button";
 
 const SignupPage = ({ setUser }) => {
   let history = useHistory();
@@ -31,7 +32,6 @@ const SignupPage = ({ setUser }) => {
     try {
       e.preventDefault();
       if (userName && userEmail && userPass) {
-        alert("Submit!");
         // Faire requête axios POST
         const response = await axios.post(
           "https://lereacteur-vinted-api.herokuapp.com/user/signup",
@@ -86,7 +86,8 @@ const SignupPage = ({ setUser }) => {
             <input type="checkbox" onChange={handleCheckboxChange} /> S'inscrire
             à la newsletter
           </label>
-          <button type="submit">S'inscrire</button>
+          {/* <button type="submit">S'inscrire</button> */}
+          <Button type="submit" text="S'inscrire" />
         </form>
       </div>
     </main>

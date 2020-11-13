@@ -28,7 +28,7 @@ const OfferPage = () => {
   return isLoading ? (
     <p>Loading...</p>
   ) : (
-    <main className="product-main margin-top-58">
+    <main className="offer-main margin-top-58">
       <div className="container">
         <Offer data={data} />
       </div>

@@ -39,7 +39,7 @@ function App() {
           <SignupPage setUser={setUser} />
         </Route>
         <Route path="/login">
-          <LoginPage />
+          <LoginPage setUser={setUser} />
         </Route>
         <Route path="/offer/:id">
           <OfferPage />

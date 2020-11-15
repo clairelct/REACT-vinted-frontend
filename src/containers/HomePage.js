@@ -58,7 +58,6 @@ const HomePage = () => {
 
   // Fonction d'affichage d'une page
   const handleClickPage = (item) => {
-    console.log("clic sur page ", item);
     setPage(item);
   };
 

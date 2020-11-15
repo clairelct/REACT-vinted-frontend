@@ -1,6 +1,6 @@
 /* HERO */
 .home-hero {
-  background-image: url("https://images.vinted.net/thumbs/2560x1441/01_00636_oy5dGiQrBYG1uTwfeSmnb7Y8.jpeg?1597418184-48d07f2e7cff7a2dcc6c565ea338342ad5e9a5b9");
+  background-image: url("../../../../public/hero.jpg");
   background-position: center 25%;
   background-size: cover;
 }

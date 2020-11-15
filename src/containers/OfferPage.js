@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Offer from "../components/Offer";
 import axios from "axios";
+import Loader from "react-loader-spinner";
 
 const OfferPage = () => {
   // Récupérer l'id en paramètre
@@ -28,7 +29,14 @@ const OfferPage = () => {
   }, [id]);
 
   return isLoading ? (
-    <p>Loading...</p>
+    <Loader
+      className="loader"
+      type="Puff"
+      color="#00BFFF"
+      height={100}
+      width={100}
+      timeout={3000} //3 secs
+    />
   ) : (
     <main className="offer-main margin-top-58">
       <div className="container">

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import HomePage from "./containers/HomePage";

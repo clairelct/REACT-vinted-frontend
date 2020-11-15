@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Hero from "../components/Home/Hero";
 import Offers from "../components/Home/Offers";
+import Loader from "react-loader-spinner";
 
 const HomePage = () => {
   // State requête axios
@@ -40,7 +41,14 @@ const HomePage = () => {
   }, [setData]);
 
   return isLoading ? (
-    <p>Loading...</p>
+    <Loader
+      className="loader"
+      type="Puff"
+      color="#00BFFF"
+      height={100}
+      width={100}
+      timeout={3000} //3 secs
+    />
   ) : (
     <div>
       <Hero />

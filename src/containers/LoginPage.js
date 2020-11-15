@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../components/Shared/Button";
 
 const LoginPage = ({ setUser }) => {
@@ -65,6 +65,9 @@ const LoginPage = ({ setUser }) => {
           />
           {/* <button type="submit">Se connecter</button> */}
           <Button text="Se connecter" type="submit" />
+          <Link className="link" to="/signup">
+            Pas encore de compte ? Inscris-toi !
+          </Link>
         </form>
       </div>
     </main>

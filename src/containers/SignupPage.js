@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Button from "../components/Shared/Button";
 
 const SignupPage = ({ setUser }) => {
@@ -82,12 +82,22 @@ const SignupPage = ({ setUser }) => {
             value={userPass}
             onChange={handleUserPassChange}
           />
-          <label htmlFor="">
-            <input type="checkbox" onChange={handleCheckboxChange} /> S'inscrire
-            à la newsletter
-          </label>
+          <div className="rgpd-signup">
+            <label htmlFor="">
+              <input type="checkbox" onChange={handleCheckboxChange} />{" "}
+              S'inscrire à notre newsletter
+            </label>
+            <p className="legend">
+              En m'inscrivant je confirme avoir lu et accepté les Termes &amp;
+              Conditions et Politique de Confidentialité de Vinted. Je confirme
+              avoir au moins 18 ans.{" "}
+            </p>
+          </div>
           {/* <button type="submit">S'inscrire</button> */}
           <Button type="submit" text="S'inscrire" />
+          <Link className="link" to="/login">
+            Tu as déjà un compte ? Connecte-toi !
+          </Link>
         </form>
       </div>
     </main>

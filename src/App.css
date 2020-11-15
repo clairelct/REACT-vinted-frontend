@@ -1,5 +1,6 @@
 /* Other rules */
 :root {
+  --grey-pale: #e3e3e3;
   --grey-light: #b2b2b2;
   --grey-standard: #666666;
   --grey-dark: #333333;
@@ -20,11 +21,15 @@ body {
   color: var(--grey-standard);
   font-family: "Roboto Condensed", sans-serif;
 }
+
 .container {
   width: 80%;
   max-width: 1170px;
   margin: 0 auto;
   padding: 20px 0;
+}
+main .container {
+  padding: 40px 0;
 }
 .margin-top-58 {
   margin-top: 58px;
@@ -34,17 +39,40 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.link {
+  color: var(--turquoise);
+  font-size: 14px;
+  text-align: center;
+}
 h2 {
   color: black;
   font-size: 26px;
   text-align: center;
   margin: 15px 0 25px;
 }
+.legend {
+  font-size: 13px;
+  line-height: 16px;
+  color: var(--grey-light);
+}
+input,
+button {
+  font-family: "Roboto Condensed", sans-serif;
+  outline: none;
+}
+input {
+  padding: 10px;
+  font-size: 15px;
+  border: none;
+  border-bottom: 1px solid var(--grey-pale);
+}
+input::placeholder {
+  color: var(--grey-light);
+}
 button {
   border: 1px solid var(--turquoise);
   background-color: var(--turquoise);
   color: #ffffff;
-  font-family: "Roboto Condensed", sans-serif;
   border-radius: 5px;
   padding: 10px 20px;
   font-size: 16px;
@@ -69,7 +97,7 @@ button {
   align-items: center;
 }
 
-/* SIGNUP - LOGIN */
+/* SIGNUP & LOGIN */
 form {
   display: flex;
   flex-direction: column;
@@ -79,6 +107,16 @@ form {
 
 form input {
   margin: 10px 0;
+}
+form input[type="checkbox"] {
+  margin-right: 5px;
+  padding: 5px;
+}
+form button {
+  margin: 20px 0;
+}
+.rgpd-signup {
+  margin: 15px 0 20px;
 }
 
 /* COMPONENT DISPLAY USER */
@@ -95,19 +133,36 @@ form input {
   border-radius: 50%;
   margin-right: 10px;
 }
+/* SELECT INPUT */
+.select-input {
+  border: none;
+  margin-left: 10px;
+  padding: 5px;
+  border-bottom: 1px solid var(--grey-pale);
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 16px;
+  color: var(--turquoise);
+  outline: none;
+}
 
 /* BTN PAGE */
 .pages-container {
   display: flex;
+  justify-content: center;
+  margin: 30px 0;
 }
 .pages-container div {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
-  border: 1px solid #f6f5f5;
+  /* border: 1px solid var(--grey-pale); */
   cursor: pointer;
 }
+.current-page {
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.15);
+}
+
 .pages-container div:not(:last-child) {
   margin-right: 10px;
 }

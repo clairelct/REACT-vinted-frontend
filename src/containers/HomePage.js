@@ -13,8 +13,8 @@ const HomePage = () => {
   // Au clic sur une page
   const [page, setPage] = useState(1);
 
-  // State Nb. d'offres par page (par défaut fixé à 5)
-  const [nbItems, setNbItems] = useState(5);
+  // State Nb. d'offres par page (par défaut fixé à 10)
+  const [nbItems, setNbItems] = useState(10);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,14 +76,15 @@ const HomePage = () => {
       <div className="container">
         {/* Selecteur affichage des offres */}
         <div>
-          <span>Nombre de produits par page :</span>
+          <span>Montrez-moi :</span>
           <select
+            className="select-input"
             value={nbItems}
             onChange={handleNbItems}
             name="nbItemsPerPage"
             id="nbItemsPerPage"
           >
-            <option value="">--Please choose an option--</option>
+            <option value={data.count}>- Tout les produits -</option>
             <option value="5">5 produits par page</option>
             <option value="10">10 produits par page</option>
             <option value="15">15 produits par page</option>
@@ -96,8 +97,11 @@ const HomePage = () => {
 
         <div className="pages-container">
           {pagesFunc().map((item, index) => {
+            console.log("item", item);
+            console.log("page", page);
             return (
               <div
+                className={page === item ? "current-page" : ""}
                 key={index}
                 onClick={() => {
                   handleClickPage(item);

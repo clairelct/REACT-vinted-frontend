@@ -1,6 +1,6 @@
 /* HERO */
 .home-hero {
-  background-image: url("../../../../public/hero.jpg");
+  background-image: url("/hero.jpg");
   background-position: center 25%;
   background-size: cover;
 }

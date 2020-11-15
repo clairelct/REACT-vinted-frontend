@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "./components/Navigation";
+import Header from "./components/Header/Header";
 import HomePage from "./containers/HomePage";
 import OfferPage from "./containers/OfferPage";
 import SignupPage from "./containers/SignupPage";
@@ -32,7 +32,7 @@ function App() {
   };
   return (
     <Router>
-      <Navigation logo={Logo} token={token} setUser={setUser} />
+      <Header logo={Logo} token={token} setUser={setUser} />
       {/* Pages */}
       <Switch>
         <Route path="/signup">

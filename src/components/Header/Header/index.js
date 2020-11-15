@@ -1,12 +1,12 @@
 import React from "react";
 import "./index.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import Button from "../Shared/Button";
+import SearchBar from "../SearchBar";
+import Button from "../../Shared/Button";
 
-const Navigation = ({ logo, token, setUser }) => {
+const Header = ({ logo, token, setUser }) => {
   return (
-    <section className="main-nav">
+    <header className="main-nav">
       <div className="topbar">
         <div className="container">
           <div>
@@ -14,10 +14,9 @@ const Navigation = ({ logo, token, setUser }) => {
               <img className="topbar-logo" src={logo} alt="Vinted" />
             </Link>
           </div>
-          <div className="search-container">
-            <FontAwesomeIcon icon="search" />
-            <input type="text" placeholder="Recherche" />
-          </div>
+
+          <SearchBar />
+
           {/* Conditionnelle si user connecté */}
           {token ? (
             <Link to="/login">
@@ -60,8 +59,8 @@ const Navigation = ({ logo, token, setUser }) => {
           </ul>
         </nav>
       </div>
-    </section>
+    </header>
   );
 };
 
-export default Navigation;
+export default Header;

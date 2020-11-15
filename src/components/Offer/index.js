@@ -9,8 +9,8 @@ const Offer = ({ data }) => {
     <div className="offer-container">
       <div className="offer-product-image">
         <img
-          src={data.product_image.secure_url}
-          alt={data.product_image.original_filename}
+          src={data.product_image.picture.result.secure_url}
+          alt={data.product_image.picture.result.original_filename}
         />
       </div>
       <div className="offer-product-details">
@@ -32,7 +32,7 @@ const Offer = ({ data }) => {
           <p className="product-name">{data.product_name}</p>
           <p>{data.product_description}</p>
           <DisplayUser
-            src={data.owner.account.avatar.secure_url}
+            src={data.owner.account.avatar}
             alt={data.owner.account.avatar.original_filename}
             username={data.owner.account.username}
           />

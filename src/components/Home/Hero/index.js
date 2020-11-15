@@ -2,17 +2,17 @@ import React from "react";
 import "./index.css";
 import Button from "../../Shared/Button";
 
-const Header = () => {
+const Hero = () => {
   return (
-    <header className="home-header">
+    <section className="home-hero">
       <div className="container">
         <div className="intro-hero">
           <span>Prêts à faire du tri dans vos placards ?</span>
           <Button text="Commencer à vendre" />
         </div>
       </div>
-    </header>
+    </section>
   );
 };
 
-export default Header;
+export default Hero;

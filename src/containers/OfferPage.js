@@ -13,10 +13,12 @@ const OfferPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
-        );
+        const response = await axios.get(`http://localhost:3001/offer/${id}`);
+        // const response = await axios.get(
+        //   `https://vinted-phoenix.herokuapp.com/offer/${id}`
+        // );
         setData(response.data);
+        console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);

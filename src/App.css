@@ -54,8 +54,8 @@ button {
   background-color: #ffffff;
   color: var(--turquoise);
 }
-/* HEADER */
-header {
+/* HERO */
+.home-hero {
   margin-top: 58px; /* hauteur nav */
   height: 65vh;
   min-height: 400px;
@@ -87,5 +87,20 @@ form input {
   width: 50px;
   object-fit: cover;
   border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* BTN PAGE */
+.pages-container {
+  display: flex;
+}
+.pages-container div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #f6f5f5;
+}
+.pages-container div:not(:last-child) {
   margin-right: 10px;
 }

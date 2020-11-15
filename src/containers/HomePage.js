@@ -9,7 +9,7 @@ const HomePage = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   // State affichage des boutons de page, tab. car mapper dessus pour afficher x boutons
-  const [pages, setPages] = useState([]);
+  //const [pages, setPages] = useState([]);
   // Au clic sur une page
   const [page, setPage] = useState(1);
 
@@ -27,32 +27,33 @@ const HomePage = () => {
         // );
         setData(response.data);
 
-        // Pagination
-        let elem = 1;
-        const newPages = [...pages];
-
-        for (let i = 1; i <= response.data.count; i += nbItems) {
-          newPages.push(elem);
-          elem = elem + 1;
-        }
-        console.log("newPages", newPages);
-        setPages(newPages);
-
         setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
     };
     fetchData();
-  }, [setData, setPages, nbItems]);
+  }, [setData, page, nbItems]);
 
   // Fonction de sélection du nombre d'offres/pages
   const handleNbItems = (e) => {
     const value = Number(e.target.value);
     //console.log(value);
     setNbItems(value);
-    // Ré-initialiser sinon accumulation des tab. de pages
-    setPages([]);
+    // à chaque changement de state, afficher la page 1
+    setPage(1);
+  };
+
+  // Fonction qui créé un tableau pour la pagination
+  const pagesFunc = () => {
+    let elem = 1;
+    let arrPages = [];
+
+    for (let i = 1; i <= data.count; i += nbItems) {
+      arrPages.push(elem);
+      elem = elem + 1;
+    }
+    return arrPages;
   };
 
   // Fonction d'affichage d'une page
@@ -93,8 +94,9 @@ const HomePage = () => {
         <Offers data={data} />
 
         {/* Pagination */}
+
         <div className="pages-container">
-          {pages.map((item, index) => {
+          {pagesFunc().map((item, index) => {
             return (
               <div
                 key={index}

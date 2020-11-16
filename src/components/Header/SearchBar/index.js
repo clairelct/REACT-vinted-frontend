@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
+// import axios from "axios";
 
 const SearchBar = () => {
   // State recherche
@@ -12,7 +12,12 @@ const SearchBar = () => {
   return (
     <div className="search-container">
       <FontAwesomeIcon icon="search" />
-      <input type="text" placeholder="Recherche" onChange={handleSearch} />
+      <input
+        type="text"
+        placeholder="Recherche"
+        onChange={handleSearch}
+        value={search}
+      />
     </div>
   );
 };

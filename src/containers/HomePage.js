@@ -97,8 +97,8 @@ const HomePage = () => {
 
         <div className="pages-container">
           {pagesFunc().map((item, index) => {
-            console.log("item", item);
-            console.log("page", page);
+            //console.log("item", item);
+            //console.log("page", page);
             return (
               <div
                 className={page === item ? "current-page" : ""}

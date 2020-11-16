@@ -28,6 +28,9 @@ body {
   margin: 0 auto;
   padding: 20px 0;
 }
+main {
+  margin-top: 57px; /* height header */
+}
 main .container {
   padding: 40px 0;
 }
@@ -49,6 +52,14 @@ h2 {
   font-size: 26px;
   text-align: center;
   margin: 15px 0 25px;
+}
+h3 {
+}
+
+h4 {
+  font-size: 18px;
+  color: black;
+  line-height: 22px;
 }
 .legend {
   font-size: 13px;
@@ -117,6 +128,39 @@ form button {
 }
 .rgpd-signup {
   margin: 15px 0 20px;
+}
+
+/* PUBLISH */
+.publish-main {
+  background-color: #ebedee;
+}
+/* Formulaire */
+.publish-form {
+  width: 100%;
+}
+.publish-form section {
+  background-color: #ffffff;
+  width: 100%;
+  margin-bottom: 15px;
+}
+.publish-form section div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+}
+.publish-form section > div:not(:nth-of-type(1)) {
+  border-top: 1px solid var(--grey-pale);
+}
+.publish-form input,
+.publish-form textarea {
+  width: 50%;
+  margin: 0;
+}
+.publish-form .checkbox-section {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* COMPONENT DISPLAY USER */

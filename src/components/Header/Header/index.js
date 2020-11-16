@@ -43,8 +43,9 @@ const Header = ({ logo, token, setUser }) => {
             </div>
           )}
           {/* Fin conditionelle */}
-
-          <Button className="btn-small btn-sell" text="Vends tes articles" />
+          <Link to="/publish">
+            <Button className="btn-small btn-sell" text="Vends tes articles" />
+          </Link>
         </div>
       </div>
       <div className="nav">

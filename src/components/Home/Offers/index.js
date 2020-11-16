@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
 import DisplayUser from "../../Shared/DisplayUser";
-import axios from "axios";
 
 const Offers = ({ data }) => {
   return (

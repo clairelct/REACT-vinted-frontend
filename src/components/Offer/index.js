@@ -5,13 +5,27 @@ import Button from "../Shared/Button";
 
 const Offer = ({ data }) => {
   console.log(data);
+  const arrFiles = Object.keys(data.product_image);
+
   return (
     <div className="offer-container">
       <div className="offer-product-image">
-        <img
-          src={data.product_image.picture.result.secure_url}
-          alt={data.product_image.picture.result.original_filename}
-        />
+        {/* Conditionnelle nb. de photos */}
+        {arrFiles.length > 1 ? (
+          arrFiles.map((item, index) => {
+            return (
+              <div key={index} className="">
+                <img
+                  src={data.product_image[item].result.secure_url}
+                  alt={data.product_image[item].result.original_filename}
+                />
+              </div>
+            );
+          })
+        ) : (
+          <p>1 photo</p>
+        )}
+        {/* Si plusieurs photos */}
       </div>
       <div className="offer-product-details">
         <div>

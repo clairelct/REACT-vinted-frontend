@@ -6,7 +6,7 @@ import axios from "axios";
 const PublishPage = ({ token }) => {
   const history = useHistory();
   // States form
-  const [file, setFile] = useState(); // 1 objet file
+  const [files, setFiles] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -17,8 +17,22 @@ const PublishPage = ({ token }) => {
   const [price, setPrice] = useState("");
 
   // onChanges form inputs
-  const handleChangeFile = (e) => {
-    setFile(e.target.files[0]);
+  const handleChangeFiles = (e) => {
+    // setFile(e.target.files[0]); // Envoyer 1 fichier : [{...}]
+    //setFile(e.target.files); // Envoie tout l'objet [{..},{..},{..}] /!\ On peut pas faire file.map()
+    //console.log(e.target.files);
+
+    const targetFiles = e.target.files;
+    // console.log(files.length);
+
+    // CONVERTIR NODELIST EN ARRAY
+    const listFiles = Object.keys(e.target.files); //nodeList
+    const newFiles = [...files];
+    listFiles.map((item, index) => {
+      return newFiles.push(e.target.files[index]); // [File, File, File]
+    });
+    console.log("newFiles", newFiles);
+    setFiles(newFiles);
   };
 
   const handleChangeTitle = (e) => {
@@ -65,7 +79,13 @@ const PublishPage = ({ token }) => {
 
   // Préparer l'objet formData à envoyer dans requête post
   const formData = new FormData();
-  formData.append("picture", file);
+  // Boucler sur un tableau de files
+  // append a la meme clé "file", files[i]
+  files.map((file, index) => {
+    //console.log("file", file);
+    return formData.append("file", file); //formData.file: [{..},{..},{..}]
+  });
+
   formData.append("title", title);
   formData.append("description", description);
   formData.append("brand", brand);
@@ -79,7 +99,7 @@ const PublishPage = ({ token }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
-      file &&
+      files &&
       title &&
       description &&
       brand &&
@@ -111,7 +131,7 @@ const PublishPage = ({ token }) => {
         <h2>Vends ton article</h2>
         <form className="publish-form" onSubmit={handleSubmit}>
           <section>
-            <input type="file" onChange={handleChangeFile} />
+            <input type="file" multiple={true} onChange={handleChangeFiles} />
           </section>
           <section>
             <div>

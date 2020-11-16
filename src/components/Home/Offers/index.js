@@ -18,8 +18,8 @@ const Offers = ({ data }) => {
               <div className="display-productimg">
                 {/* Modifier */}
                 <img
-                  src={offer.product_image.picture.result.secure_url}
-                  alt={offer.product_image.picture.result.original_filename}
+                  src={offer.product_image.file0.result.secure_url}
+                  alt={offer.product_image.file0.result.original_filename}
                 />
               </div>
               <div className="display-productinfos">

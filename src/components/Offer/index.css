@@ -1,5 +1,6 @@
 /* OFFER */
-.offer-main {
+.offer-main,
+.payment-main {
   background-color: #ebedee;
   height: 100vh;
 }

@@ -58,9 +58,11 @@ const Offer = ({ data }) => {
               pathname: "/payment",
               orderRef: {
                 ownerId: data.owner._id,
-                ownerUsername: data.owner.username,
+                ownerUsername: data.owner.account.username,
                 productName: data.product_name,
+                productDesc: data.product_description,
                 price: data.product_price,
+                productImg: data.product_image,
               },
             });
           }}

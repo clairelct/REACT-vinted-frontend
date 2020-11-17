@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import Button from "../../../components/Shared/Button";
+import Button from "../../Shared/Button";
+import "./index.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CheckoutForm = ({ orderRef }) => {
   const stripe = useStripe();
@@ -23,21 +26,35 @@ const CheckoutForm = ({ orderRef }) => {
       // 3. Envoyer le token reçu par Stripe dans notre serveur
       const response = await axios.post("http://localhost:3001/pay", {
         stripeToken: stripeToken,
+        productName: orderRef.productName,
+        description: orderRef.productDesc,
+        price: orderRef.price,
       });
       console.log("reponse serveur:", response.data);
       // Si réponse serveur OK, la transation est passé, succeed:true
+      if (response.data.status === "succeeded") {
+        setCompleted(true);
+      }
     } catch (error) {
       console.log(error);
     }
   };
 
   return !completed ? (
-    <form onSubmit={handleSubmit}>
+    <form className="checkout-form" onSubmit={handleSubmit}>
       <CardElement />
       <Button type="submit" text="Valider" />
     </form>
   ) : (
-    <span>Paiement effectué !</span>
+    <div className="checkout-succeed">
+      <div>
+        <FontAwesomeIcon icon="check-circle" />
+        <span>Paiement effectué !</span>
+      </div>
+      <Link className="link" to="/">
+        Continuer mes achats
+      </Link>
+    </div>
   );
 };
 

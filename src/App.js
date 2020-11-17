@@ -12,8 +12,8 @@ import PaymentPage from "./containers/PaymentPage";
 import Cookies from "js-cookie";
 import Logo from "./assets/Vinted_logo.png";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch);
+import { faSearch, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faCheckCircle);
 
 function App() {
   // State token : interroge si le user est connecté

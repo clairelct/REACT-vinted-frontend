@@ -1,6 +1,6 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import CheckoutForm from "../components/Payment/CheckoutForm/CheckoutForm";
+import CheckoutForm from "../components/Payment/CheckoutForm";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 
@@ -11,16 +11,47 @@ const stripePromise = loadStripe(
 const PaymentPage = ({ token }) => {
   const location = useLocation();
   const orderRef = location.orderRef;
-  console.log("Ref. commande, page payment:", orderRef);
+  //console.log("Ref. commande, page payment:", orderRef);
 
   return (
-    <main>
+    <main className="payment-main">
       <div className="container">
         <div className="payment-container">
-          <h2>Résumé de la commande</h2>
-          <Elements stripe={stripePromise}>
-            <CheckoutForm orderRef={orderRef} />
-          </Elements>
+          <div className="order-header">
+            <h2>Résumé de la commande</h2>
+            <div>
+              <span className="legend">Produit</span>
+              <p>{orderRef.productName}</p>
+            </div>
+            <div>
+              <span className="legend">Description</span>
+              <p>{orderRef.productDesc}</p>
+            </div>
+            <div className="pricing">
+              <p>Montant</p>
+              <p>{orderRef.price} €</p>
+            </div>
+            <div className="pricing">
+              <p>Frais de port</p>
+              <p>Gratuit</p>
+            </div>
+          </div>
+          <div className="order-footer">
+            <div>
+              <div className="order-total">
+                <p>Total</p>
+                <p>{orderRef.price} €</p>
+              </div>
+              <span>
+                {orderRef.ownerUsername}, plus qu'une étape avant d'acquérir{" "}
+                {orderRef.productName} ! <br></br> Il ne vous reste plus qu'à
+                payer {orderRef.price} € (Frais de port inclus).
+              </span>
+            </div>
+            <Elements stripe={stripePromise}>
+              <CheckoutForm orderRef={orderRef} />
+            </Elements>
+          </div>
         </div>
       </div>
     </main>

@@ -1,10 +1,11 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import DisplayUser from "../Shared/DisplayUser";
 import "./index.css";
-import Button from "../Shared/Button";
 
 const Offer = ({ data }) => {
   console.log(data);
+  const history = useHistory();
   const arrFiles = Object.keys(data.product_image);
 
   return (
@@ -51,7 +52,21 @@ const Offer = ({ data }) => {
             username={data.owner.account.username}
           />
         </div>
-        <Button text="Acheter" />
+        <button
+          onClick={() => {
+            history.push({
+              pathname: "/payment",
+              orderRef: {
+                ownerId: data.owner._id,
+                ownerUsername: data.owner.username,
+                productName: data.product_name,
+                price: data.product_price,
+              },
+            });
+          }}
+        >
+          Acheter
+        </button>
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import OfferPage from "./containers/OfferPage";
 import SignupPage from "./containers/SignupPage";
 import LoginPage from "./containers/LoginPage";
 import PublishPage from "./containers/PublishPage";
+import PaymentPage from "./containers/PaymentPage";
 import Cookies from "js-cookie";
 import Logo from "./assets/Vinted_logo.png";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path="/publish">
           <PublishPage token={token} />
+        </Route>
+        <Route path="/payment">
+          <PaymentPage token={token} />
         </Route>
         <Route path="/offer/:id">
           <OfferPage />

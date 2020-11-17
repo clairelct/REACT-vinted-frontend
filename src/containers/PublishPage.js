@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Button from "../components/Shared/Button";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 const PublishPage = ({ token }) => {
   const history = useHistory();
@@ -14,7 +15,7 @@ const PublishPage = ({ token }) => {
   const [color, setColor] = useState("");
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState(0);
 
   // onChanges form inputs
   const handleChangeFiles = (e) => {
@@ -33,33 +34,6 @@ const PublishPage = ({ token }) => {
     });
     console.log("newFiles", newFiles);
     setFiles(newFiles);
-  };
-
-  const handleChangeTitle = (e) => {
-    setTitle(e.target.value);
-  };
-
-  const handleChangeDescription = (e) => {
-    setDescription(e.target.value);
-  };
-
-  const handleChangeBrand = (e) => {
-    setBrand(e.target.value);
-  };
-
-  const handleChangeSize = (e) => {
-    setSize(e.target.value);
-  };
-  const handleChangeColor = (e) => {
-    setColor(e.target.value);
-  };
-
-  const handleChangeCondition = (e) => {
-    setCondition(e.target.value);
-  };
-
-  const handleChangeCity = (e) => {
-    setCity(e.target.value);
   };
 
   const handleChangePrice = (e) => {
@@ -98,34 +72,38 @@ const PublishPage = ({ token }) => {
   // onSubmit - Envoi vers serveur
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (
-      files &&
-      title &&
-      description &&
-      brand &&
-      size &&
-      color &&
-      condition &&
-      city &&
-      price
-    ) {
-      const response = await axios.post(
-        "http://localhost:3001/offer/publish",
-        formData,
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log(response.data);
-      history.push("/");
-    } else {
-      alert("Il manque des informations !");
+    try {
+      if (
+        files &&
+        title &&
+        description &&
+        brand &&
+        size &&
+        color &&
+        condition &&
+        city &&
+        price
+      ) {
+        const response = await axios.post(
+          "http://localhost:3001/offer/publish",
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log(response.data);
+        history.push("/");
+      } else {
+        alert("Il manque des informations !");
+      }
+    } catch (error) {
+      console.log(error.response);
     }
   };
 
-  return (
+  return token ? (
     <main className="publish-main">
       <div className="container">
         <h2>Vends ton article</h2>
@@ -140,7 +118,9 @@ const PublishPage = ({ token }) => {
                 type="text"
                 name="title"
                 value={title}
-                onChange={handleChangeTitle}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
                 placeholder="ex: Chemise Sézane verte"
               />
             </div>
@@ -152,7 +132,9 @@ const PublishPage = ({ token }) => {
                 rows="10"
                 placeholder="ex: Porté quelque fois, taille correctement"
                 value={description}
-                onChange={handleChangeDescription}
+                onChange={(e) => {
+                  setDescription(e.target.value);
+                }}
               ></textarea>
             </div>
           </section>
@@ -163,7 +145,9 @@ const PublishPage = ({ token }) => {
                 type="text"
                 name="brand"
                 value={brand}
-                onChange={handleChangeBrand}
+                onChange={(e) => {
+                  setBrand(e.target.value);
+                }}
                 placeholder="ex: Zara"
               />
             </div>
@@ -173,7 +157,9 @@ const PublishPage = ({ token }) => {
                 type="text"
                 name="size"
                 value={size}
-                onChange={handleChangeSize}
+                onChange={(e) => {
+                  setSize(e.target.value);
+                }}
                 placeholder="ex: L / 40 / 12"
               />
             </div>
@@ -183,7 +169,9 @@ const PublishPage = ({ token }) => {
                 type="text"
                 name="color"
                 value={color}
-                onChange={handleChangeColor}
+                onChange={(e) => {
+                  setColor(e.target.value);
+                }}
                 placeholder="ex: Fushia"
               />
             </div>
@@ -193,7 +181,9 @@ const PublishPage = ({ token }) => {
                 type="text"
                 name="condition"
                 value={condition}
-                onChange={handleChangeCondition}
+                onChange={(e) => {
+                  setCondition(e.target.value);
+                }}
                 placeholder="ex: Neuf avec étiquette"
               />
             </div>
@@ -203,7 +193,9 @@ const PublishPage = ({ token }) => {
                 type="text"
                 name="city"
                 value={city}
-                onChange={handleChangeCity}
+                onChange={(e) => {
+                  setCity(e.target.value);
+                }}
                 placeholder="ex: Paris"
               />
             </div>
@@ -213,7 +205,7 @@ const PublishPage = ({ token }) => {
               <h4>Price</h4>
               <div className="checkbox-section">
                 <input
-                  type="text"
+                  type="number"
                   name="price"
                   value={price}
                   onChange={handleChangePrice}
@@ -231,6 +223,13 @@ const PublishPage = ({ token }) => {
         </form>
       </div>
     </main>
+  ) : (
+    <Redirect
+      to={{
+        pathname: "/login",
+        state: { fromPublish: true },
+      }}
+    />
   );
 };
 

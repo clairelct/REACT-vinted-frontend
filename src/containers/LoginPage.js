@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Button from "../components/Shared/Button";
 
 const LoginPage = ({ setUser }) => {
   let history = useHistory();
+  const location = useLocation();
+
   const [userEmail, setUserEmail] = useState("");
   const [userPass, setUserPass] = useState("");
 
@@ -32,7 +34,8 @@ const LoginPage = ({ setUser }) => {
         if (response.data.token) {
           setUser(response.data.token);
           console.log(response.data.token);
-          history.push("/");
+          //
+          history.push(location.state.fromPublish ? "/publish" : "/");
         }
       } else {
         alert("Tous les champs doivent être remplis !");

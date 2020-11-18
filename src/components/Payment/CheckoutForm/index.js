@@ -28,11 +28,14 @@ const CheckoutForm = ({ orderRef }) => {
       const stripeToken = stripeResponse.token.id;
 
       // 3. Envoyer le token reçu par Stripe dans notre serveur
-      const response = await axios.post("http://localhost:3001/pay", {
-        stripeToken: stripeToken,
-        productName: orderRef.productName,
-        price: orderRef.price,
-      });
+      const response = await axios.post(
+        "https://vinted-phoenix.herokuapp.com/pay",
+        {
+          stripeToken: stripeToken,
+          productName: orderRef.productName,
+          price: orderRef.price,
+        }
+      );
       //console.log("reponse serveur:", response.data);
 
       // Si réponse serveur OK, la transation est passé, succeed:true

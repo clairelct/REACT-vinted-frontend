@@ -33,11 +33,14 @@ const SignupPage = ({ setUser }) => {
       e.preventDefault();
       if (userName && userEmail && userPass) {
         // Faire requête axios POST
-        const response = await axios.post("http://localhost:3001/user/signup", {
-          username: userName,
-          email: userEmail,
-          password: userPass,
-        });
+        const response = await axios.post(
+          "https://vinted-phoenix.herokuapp.com/user/signup",
+          {
+            username: userName,
+            email: userEmail,
+            password: userPass,
+          }
+        );
         // Si response, envoyer le token à la fonction qui se charge de
         // stocker le token dans un cookie ET de set le State token (qui interroge si user est connecté)
         if (response.data.token) {

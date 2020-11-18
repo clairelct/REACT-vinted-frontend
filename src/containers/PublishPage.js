@@ -66,7 +66,7 @@ const PublishPage = ({ token }) => {
         price
       ) {
         const response = await axios.post(
-          "http://localhost:3001/offer/publish",
+          "https://vinted-phoenix.herokuapp.com/offer/publish",
           formData,
           {
             headers: {

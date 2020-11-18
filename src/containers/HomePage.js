@@ -20,11 +20,8 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/offers?page=${page}&limit=${nbItems}`
+          `https://vinted-phoenix.herokuapp.com/offers?page=${page}&limit=${nbItems}`
         );
-        // const response = await axios.get(
-        //   "https://vinted-phoenix.herokuapp.com/offers"
-        // );
         setData(response.data);
 
         setIsLoading(false);

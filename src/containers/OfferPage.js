@@ -19,7 +19,7 @@ const OfferPage = () => {
         //   `https://vinted-phoenix.herokuapp.com/offer/${id}`
         // );
         setData(response.data);
-        console.log(response.data);
+        //console.log(response.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);

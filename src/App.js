@@ -12,20 +12,25 @@ import PaymentPage from "./containers/PaymentPage";
 import Cookies from "js-cookie";
 import Logo from "./assets/Vinted_logo.png";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSearch, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-library.add(faSearch, faCheckCircle);
+import {
+  faSearch,
+  faCheckCircle,
+  faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faCheckCircle, faPlusCircle);
 
 function App() {
   // State token : interroge si le user est connecté
   // Ne peut être que null ou bien le token (enregistré dans le cookie)
   const [token, setToken] = useState(Cookies.get("token") || null);
 
-  const setUser = (tokenToSet) => {
-    if (tokenToSet) {
-      // Stocker le token dans un cookie
-      Cookies.set("token", tokenToSet, { expires: 7 });
+  const setUser = (dataUser) => {
+    if (dataUser) {
+      // Stocker le token ET l'id de l'utilisateur connecté dans un cookie
+      Cookies.set("token", dataUser.token, { expires: 7 });
+      Cookies.set("userId", dataUser._id, { expires: 7 });
       // Rafraichir le state token
-      setToken(tokenToSet);
+      setToken(dataUser.token);
     } else {
       // Si fonction appelée sans argument, supprimer le cookie en place
       Cookies.remove("token");
@@ -33,6 +38,7 @@ function App() {
       setToken(null);
     }
   };
+
   return (
     <Router>
       <Header logo={Logo} token={token} setUser={setUser} />

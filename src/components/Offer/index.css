@@ -20,14 +20,24 @@
   display: flex;
 }
 
-.offer-product-image div {
+.offer-product-image > div {
   width: 100%;
   height: 100%;
 }
-
+/* For 1 pic */
 .offer-product-image div.one-pic {
   width: 100%;
 }
+.offer-product-image div.one-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* For 2 pics */
+
+/* For 3 pics */
 
 .offer-product-image img {
   width: 100%;

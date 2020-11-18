@@ -3,6 +3,7 @@ import Button from "../components/Shared/Button";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const PublishPage = ({ token }) => {
   const history = useHistory();
@@ -17,14 +18,9 @@ const PublishPage = ({ token }) => {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
 
-  // onChanges form inputs
   const handleChangeFiles = (e) => {
     // setFile(e.target.files[0]); // Envoyer 1 fichier : [{...}]
     //setFile(e.target.files); // Envoie tout l'objet [{..},{..},{..}] /!\ On peut pas faire file.map()
-    //console.log(e.target.files);
-
-    const targetFiles = e.target.files;
-    // console.log(files.length);
 
     // CONVERTIR NODELIST EN ARRAY
     const listFiles = Object.keys(e.target.files); //nodeList
@@ -32,23 +28,8 @@ const PublishPage = ({ token }) => {
     listFiles.map((item, index) => {
       return newFiles.push(e.target.files[index]); // [File, File, File]
     });
-    console.log("newFiles", newFiles);
+    // console.log("newFiles", newFiles);
     setFiles(newFiles);
-  };
-
-  const handleChangePrice = (e) => {
-    const value = e.target.value;
-    const regex = /[0-9]/g;
-    const result = regex.test(value);
-    // console.log("result regex: ", result);
-    // console.log("Value est:", typeof value);
-
-    if (result) {
-      setPrice(Number(value));
-    } else {
-      alert("Indiquez un prix en chiffres !");
-      setPrice("");
-    }
   };
 
   // Préparer l'objet formData à envoyer dans requête post
@@ -108,8 +89,30 @@ const PublishPage = ({ token }) => {
       <div className="container">
         <h2>Vends ton article</h2>
         <form className="publish-form" onSubmit={handleSubmit}>
-          <section>
-            <input type="file" multiple={true} onChange={handleChangeFiles} />
+          <section className="file-upload">
+            <div>
+              <label className="file-label" htmlFor="file-input">
+                <FontAwesomeIcon icon="plus-circle" />
+                <span>Ajouter une photo</span>
+              </label>
+              <input
+                id="file-input"
+                name="file-input"
+                type="file"
+                multiple={true}
+                onChange={handleChangeFiles}
+              />
+              <p
+                className="legend"
+                style={
+                  files.length !== 0
+                    ? { display: "block" }
+                    : { display: "none" }
+                }
+              >
+                Photo(s) ajoutée(s) !
+              </p>
+            </div>
           </section>
           <section>
             <div>
@@ -208,18 +211,27 @@ const PublishPage = ({ token }) => {
                   type="number"
                   name="price"
                   value={price}
-                  onChange={handleChangePrice}
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                  }}
                   placeholder="ex: 0,00 €"
                 />
-
-                <label htmlFor="checkbox">
-                  <input name="checkbox" type="checkbox" /> Je suis intéressé(e)
-                  par les échanges
-                </label>
+                <div>
+                  <label htmlFor="checkbox-exchange">
+                    <input
+                      id="checkbox-exchange"
+                      name="checkbox-exchange"
+                      type="checkbox"
+                    />
+                    Je suis intéressé(e) par les échanges
+                  </label>
+                </div>
               </div>
             </div>
           </section>
-          <Button type="submit" text="Ajouter" />
+          <div>
+            <Button type="submit" text="Ajouter" />
+          </div>
         </form>
       </div>
     </main>

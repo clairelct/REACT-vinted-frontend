@@ -5,11 +5,15 @@ import axios from "axios";
 import Button from "../../Shared/Button";
 import "./index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Cookies from "js-cookie";
 
 const CheckoutForm = ({ orderRef }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
+
+  const userId = Cookies.get("userId");
+  //console.log("userId", userId);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,7 +22,7 @@ const CheckoutForm = ({ orderRef }) => {
       const cardElement = elements.getElement(CardElement);
       // 2. Demander un token à Stripe (API), envoyer les données bancaires
       const stripeResponse = await stripe.createToken(cardElement, {
-        name: orderRef.ownerUsername,
+        name: userId,
       });
       //console.log(stripeResponse);
       const stripeToken = stripeResponse.token.id;
@@ -27,10 +31,10 @@ const CheckoutForm = ({ orderRef }) => {
       const response = await axios.post("http://localhost:3001/pay", {
         stripeToken: stripeToken,
         productName: orderRef.productName,
-        description: orderRef.productDesc,
         price: orderRef.price,
       });
-      console.log("reponse serveur:", response.data);
+      //console.log("reponse serveur:", response.data);
+
       // Si réponse serveur OK, la transation est passé, succeed:true
       if (response.data.status === "succeeded") {
         setCompleted(true);

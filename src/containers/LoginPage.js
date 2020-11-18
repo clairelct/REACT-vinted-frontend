@@ -7,6 +7,16 @@ const LoginPage = ({ setUser }) => {
   let history = useHistory();
   const location = useLocation();
 
+  let fromPublish;
+  if (location.state) {
+    fromPublish = true;
+  } else {
+    fromPublish = false;
+  }
+
+  //const fromPublish = location.state?.fromPublish ? true : false; //ES9 - Optionnal chaining
+  // si location.state existe ? va chercher la clé .fromPublish si existe, true/false
+
   const [userEmail, setUserEmail] = useState("");
   const [userPass, setUserPass] = useState("");
 
@@ -30,12 +40,10 @@ const LoginPage = ({ setUser }) => {
           password: userPass,
         });
         // Si response, envoyer le token à la fonction qui se charge de
-        // stocker le token dans un cookie ET de set le State token (qui interroge si user est connecté)
+        // stocker le token dans un cookie ET d'update le state token (qui interroge si user est connecté)
         if (response.data.token) {
-          setUser(response.data.token);
-          console.log(response.data.token);
-          //
-          history.push(location.state.fromPublish ? "/publish" : "/");
+          setUser(response.data);
+          history.push(location.state?.fromPublish ? "/publish" : "/");
         }
       } else {
         alert("Tous les champs doivent être remplis !");
@@ -48,6 +56,12 @@ const LoginPage = ({ setUser }) => {
     <main className="margin-top-58">
       <div className="container">
         <h2>Se connecter</h2>
+        <p
+          className="warning"
+          style={fromPublish ? { display: "block" } : { display: "none" }}
+        >
+          Vous devez vous connecter pour publier une annonce.
+        </p>
         <form onSubmit={handleSubmit}>
           <input
             type="email"

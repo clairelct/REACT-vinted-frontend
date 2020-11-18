@@ -11,7 +11,6 @@ const stripePromise = loadStripe(
 const PaymentPage = ({ token }) => {
   const location = useLocation();
   const orderRef = location.orderRef;
-  //console.log("Ref. commande, page payment:", orderRef);
 
   return (
     <main className="payment-main">

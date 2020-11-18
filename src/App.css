@@ -52,6 +52,12 @@ a {
 .link:hover {
   color: #1a8188;
 }
+.warning {
+  color: #ea603d;
+  text-align: center;
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
 
 h2 {
   color: black;
@@ -72,8 +78,10 @@ h4 {
   line-height: 16px;
   color: var(--grey-light);
 }
+
 input,
-button {
+button,
+textarea {
   font-family: "Roboto Condensed", sans-serif;
   outline: none;
 }
@@ -83,7 +91,9 @@ input {
   border: none;
   border-bottom: 1px solid var(--grey-pale);
 }
-input::placeholder {
+
+input::placeholder,
+textarea::placeholder {
   color: var(--grey-light);
 }
 button {
@@ -105,6 +115,19 @@ button {
   background-color: #ffffff;
   color: var(--turquoise);
 }
+.checkbox-design {
+  border-radius: 3px;
+  padding: 2px 11px;
+  margin: 0 15px 0 0;
+  border: 1px solid #000;
+}
+.checkbox-design-checked {
+  border-radius: 3px;
+  padding: 3px 6px;
+  margin: 0 15px 0 0;
+  background-color: #0ab1ba;
+}
+
 /* HERO */
 .home-hero {
   margin-top: 58px; /* hauteur nav */
@@ -140,9 +163,10 @@ form button {
 .publish-main {
   background-color: #ebedee;
 }
-.publish-main .container {
-  width: 50%;
+.publish-main h2 {
+  text-align: left;
 }
+
 /* Formulaire */
 .publish-form {
   width: 100%;
@@ -151,13 +175,54 @@ form button {
   background-color: #ffffff;
   width: 100%;
   margin-bottom: 15px;
+  box-shadow: 0 0 2px grey;
 }
 .publish-form section div {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 15px;
+  padding: 20px;
 }
+
+.publish-form .file-upload {
+  padding: 20px;
+}
+.publish-form .file-upload div {
+  border: 1px dashed var(--grey-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  flex-direction: column;
+  position: relative;
+}
+.publish-form .file-upload .file-label {
+  border: 1px solid var(--turquoise);
+  padding: 10px;
+  border-radius: 5px;
+  color: var(--turquoise);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.publish-form .file-upload .file-label:hover {
+  box-shadow: 0px 2px 5px rgb(222, 222, 222, 1);
+  transform: translateY(-5px);
+}
+.publish-form .file-upload .file-label span {
+  margin-left: 8px;
+}
+.publish-form .file-upload p {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--grey-standard);
+}
+.publish-form .file-upload input {
+  display: none;
+}
+
 .publish-form section > div:not(:nth-of-type(1)) {
   border-top: 1px solid var(--grey-pale);
 }
@@ -165,11 +230,38 @@ form button {
 .publish-form textarea {
   width: 50%;
   margin: 0;
+  border-bottom: 1px solid var(--grey-pale);
+}
+.publish-form input:focus,
+.publish-form textarea:focus {
+  border-bottom: 1px solid var(--turquoise);
+}
+.publish-form textarea {
+  resize: none;
+  border: none;
+  font-size: 15px;
+  border-bottom: 1px solid var(--grey-pale);
+}
+.publish-form textarea::placeholder {
+  color: var(--grey-light);
 }
 .publish-form .checkbox-section {
   width: 50%;
   display: flex;
   flex-direction: column;
+}
+.publish-form .checkbox-section div {
+  padding: 20px 0;
+}
+.publish-form .checkbox-section div input {
+  width: initial;
+  margin-right: 10px;
+}
+.publish-form button {
+  width: 100px;
+}
+.publish-form > div:last-child {
+  text-align: right;
 }
 
 /* COMPONENT DISPLAY USER */
@@ -209,7 +301,7 @@ form button {
   align-items: center;
   justify-content: center;
   padding: 10px;
-  /* border: 1px solid var(--grey-pale); */
+  border: 1px solid var(--grey-pale);
   cursor: pointer;
 }
 .current-page {
